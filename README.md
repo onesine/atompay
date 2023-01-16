@@ -30,7 +30,7 @@
     cd atompay
 ```
 3. Set up the user account
-   By default, we have a user account with the login "paydunya@gmail.com" and the password "12345". To modify this account, create an .env file from the .env.example file.
+   By default, we have a user account with the login `paydunya@gmail.com` and the password `12345`. To modify this account, create an .env file from the .env.example file.
 
 ```dotenv
    REACT_APP_NAME="AtomPay"
@@ -55,6 +55,10 @@
 ```sh
     yarn start
 ```
+
+## Online Demo
+
+You can find the online demo at [here](https://test-paydunya-atompay.vercel.app/). (login: `paydunya@gmail.com`, password: `12345`)
 
 ## Overview of some pages
 **Landing page**
