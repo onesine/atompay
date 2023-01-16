@@ -11,7 +11,10 @@ const Nav = () => {
     const navigate = useNavigate();
     const handleClick = (e) => {
         e.preventDefault();
-        logout(navigate)
+        logout(navigate);
+        setTimeout(() => {
+            window.location.reload();
+        }, 100);
     };
 
     return (
