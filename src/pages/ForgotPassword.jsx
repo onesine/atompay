@@ -16,7 +16,7 @@ const ForgotPassword = () => {
         setTimeout(() => {
             setLoading(false);
             if (email) {
-                if (email !== "paydunya@gmail.com") {
+                if (email !== process.env.REACT_APP_LOGIN) {
                     toast('error', 'Failed to reload account');
                     setValidationMessage([`The email does not match a user`]);
                 } else {

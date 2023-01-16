@@ -44,7 +44,7 @@ const Login = () => {
             }
 
             if ((!email || !password) || (email !== "paydunya@gmail.com" || password !== "12345")) {
-                if (email !== "paydunya@gmail.com" || password !== "12345") {
+                if (email !== process.env.REACT_APP_LOGIN || password !== process.env.REACT_APP_PASSWORD) {
                     setInvalid(true);
                 } else {
                     setInvalid(false);
