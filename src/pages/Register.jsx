@@ -1,12 +1,13 @@
+import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { RiFacebookCircleFill } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
+
+import { PrimaryButton, SecondaryButton } from "../components/buttons";
+import { Checkbox, Input } from "../components/field";
+import { Link, Loader } from "../components/utils";
+import { toast } from "../helpers";
 import AuthLayout from "../layouts/AuthLayout";
-import {Checkbox, Input} from "../components/field";
-import {PrimaryButton, SecondaryButton} from "../components/buttons";
-import {Link, Loader} from "../components/utils";
-import {useNavigate} from "react-router-dom";
-import React, {useState} from "react";
-import {toast} from "../helpers";
 
 const Register = () => {
     const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Register = () => {
         email: [],
         password: [],
         telephone: []
-    }
+    };
 
     const [loading, setLoading] = useState(false);
     const [telephone, setTelephone] = useState("");
@@ -27,7 +28,7 @@ const Register = () => {
         setTimeout(() => {
             const newErrorMessage = defaultMessage;
             if (!email) {
-                newErrorMessage.email = ["This field is required"]
+                newErrorMessage.email = ["This field is required"];
             }
             if (!password) {
                 newErrorMessage.password = ["This field is required"];
@@ -41,13 +42,12 @@ const Register = () => {
                 toast("success", "Successful registration");
                 navigate("/login");
             } else {
-                toast("error", "Failed registration")
+                toast("error", "Failed registration");
             }
             setErrorMessage(defaultMessage);
             setLoading(false);
         }, 3000);
     };
-
 
     return (
         <AuthLayout
@@ -104,9 +104,7 @@ const Register = () => {
                 </div>
 
                 <PrimaryButton onClick={register}>
-                    {loading && (
-                        <Loader color={"white"}/>
-                    )}
+                    {loading && <Loader color={"white"} />}
                     <span>Sign up</span>
                 </PrimaryButton>
 

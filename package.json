@@ -24,10 +24,15 @@
         "web-vitals": "^2.1.4"
     },
     "scripts": {
-        "start": "react-scripts start",
+        "start": "npm run lint && npm run pret && react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "lint": "eslint \"./**/*.{js,jsx,ts,tsx,md}\"",
+        "lint:fix": "eslint --fix \"./**/*.{js,jsx,ts,tsx,md}\"",
+        "pret": "prettier -c .",
+        "pret:fix": "prettier -w .",
+        "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" --config ./.prettierrc"
     },
     "eslintConfig": {
         "extends": [
@@ -49,8 +54,15 @@
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.3",
+        "eslint": "^8.32.0",
+        "eslint-config-prettier": "^8.6.0",
+        "eslint-plugin-import": "^2.27.4",
+        "eslint-plugin-prettier": "^4.2.1",
+        "eslint-plugin-react": "^7.32.0",
+        "eslint-plugin-react-hooks": "^4.6.0",
         "init": "^0.1.2",
         "npx": "^10.2.2",
+        "prettier": "^2.8.3",
         "tailwind-scrollbar": "^2.1.0",
         "tailwindcss": "^3.2.4"
     }

@@ -1,7 +1,7 @@
+import { PrimaryButton } from "../components/buttons";
+import { Input } from "../components/field";
+import { Link } from "../components/utils";
 import AuthLayout from "../layouts/AuthLayout";
-import {Input} from "../components/field";
-import {PrimaryButton} from "../components/buttons";
-import {Link} from "../components/utils";
 
 const ResetPassword = () => {
     return (

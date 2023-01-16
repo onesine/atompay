@@ -1,5 +1,5 @@
 import { HiBeaker } from "react-icons/hi2";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const AuthLayout = ({ title = "", children }) => {
     return (

@@ -1,7 +1,14 @@
-import React, {Fragment} from "react";
-import {Dialog, Transition} from "@headlessui/react";
+import { Dialog, Transition } from "@headlessui/react";
+import React, { Fragment } from "react";
 
-const ModalContainer = ({children, isOpen, setIsOpen, clickOutSideToClose = false, size = "md", margin = "yes"}) => {
+const ModalContainer = ({
+    children,
+    isOpen,
+    setIsOpen,
+    clickOutSideToClose = false,
+    size = "md",
+    margin = "yes"
+}) => {
     const closeModal = () => {
         if (clickOutSideToClose) {
             setIsOpen(true);
@@ -9,20 +16,24 @@ const ModalContainer = ({children, isOpen, setIsOpen, clickOutSideToClose = fals
     };
     let modalWidth = "w-3/6";
     if (size === "lg") {
-        modalWidth = "w-4/6"
+        modalWidth = "w-4/6";
     }
 
     if (size === "xl") {
-        modalWidth = "w-5/6"
+        modalWidth = "w-5/6";
     }
 
     if (size === "sm") {
-        modalWidth = "w-2/6"
+        modalWidth = "w-2/6";
     }
 
     return (
         <Transition show={isOpen} as={Fragment}>
-            <Dialog open={isOpen} onClose={closeModal} className="fixed inset-0 z-50 overflow-y-auto">
+            <Dialog
+                open={isOpen}
+                onClose={closeModal}
+                className="fixed inset-0 z-50 overflow-y-auto"
+            >
                 <div className="flex items-center justify-center min-h-screen">
                     <Transition.Child
                         as={Fragment}
@@ -45,7 +56,11 @@ const ModalContainer = ({children, isOpen, setIsOpen, clickOutSideToClose = fals
                         leaveFrom="opacity-100 scale-100"
                         leaveTo="opacity-0 scale-95"
                     >
-                        <div className={`relative ${modalWidth} mx-auto bg-white rounded ${margin === "yes" ? "mb-56" : ""}`}>
+                        <div
+                            className={`relative ${modalWidth} mx-auto bg-white rounded ${
+                                margin === "yes" ? "mb-56" : ""
+                            }`}
+                        >
                             {children}
                         </div>
                     </Transition.Child>

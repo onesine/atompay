@@ -1,9 +1,10 @@
+import React, { useState } from "react";
+
+import { PrimaryButton } from "../components/buttons";
+import { Input } from "../components/field";
+import { Link, Loader } from "../components/utils";
+import { toast } from "../helpers";
 import AuthLayout from "../layouts/AuthLayout";
-import {Input} from "../components/field";
-import {PrimaryButton} from "../components/buttons";
-import {Link, Loader} from "../components/utils";
-import React, {useState} from "react";
-import {toast} from "../helpers";
 
 const ForgotPassword = () => {
     const [validationMessage, setValidationMessage] = useState([]);
@@ -17,20 +18,20 @@ const ForgotPassword = () => {
             setLoading(false);
             if (email) {
                 if (email !== (process.env.REACT_APP_LOGIN || "paydunya@gmail.com")) {
-                    toast('error', 'Failed to reload account');
-                    setValidationMessage([`The email does not match a user`]);
+                    toast("error", "Failed to reload account");
+                    setValidationMessage(["The email does not match a user"]);
                 } else {
-                    toast('success', 'An email has been sent to you to reset your password.');
+                    toast("success", "An email has been sent to you to reset your password.");
                     setEmail("");
                     setValidationMessage([]);
                 }
             } else {
-                toast('error', "Failed to reload account");
+                toast("error", "Failed to reload account");
                 setValidationMessage(["This field is required"]);
             }
         }, 3000);
     };
-    
+
     return (
         <AuthLayout
             title={
@@ -53,15 +54,15 @@ const ForgotPassword = () => {
                         type="email"
                         placeholder="Enter email"
                         value={email}
-                        onChange={e => {setEmail(e.target.value)}}
+                        onChange={e => {
+                            setEmail(e.target.value);
+                        }}
                         error={validationMessage}
                     />
                 </div>
 
                 <PrimaryButton onClick={onSubmit} disabled={loading}>
-                    {loading && (
-                        <Loader color={"white"}/>
-                    )}
+                    {loading && <Loader color={"white"} />}
                     <span>Send Reset Link</span>
                 </PrimaryButton>
 

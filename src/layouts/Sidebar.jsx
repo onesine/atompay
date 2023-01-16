@@ -1,24 +1,25 @@
-import {NavLink} from "react-router-dom";
-import {scrollTop} from "../helpers";
-import {HiOutlineHome} from "react-icons/hi";
-import {TfiReload} from "react-icons/tfi";
+import { HiOutlineHome } from "react-icons/hi";
+import { TfiReload } from "react-icons/tfi";
+import { NavLink } from "react-router-dom";
+
+import { scrollTop } from "../helpers";
 
 const Sidebar = () => {
-
     const handleClickLink = () => {
-        scrollTop()
+        scrollTop();
     };
 
-
-    const getActiveClassByLink = (link) => {
+    const getActiveClassByLink = link => {
         return {
             isActive: window.location.pathname === link,
-            class: window.location.pathname === link ? ' text-white shadow bg-indigo-600' : ''
-        }
+            class: window.location.pathname === link ? " text-white shadow bg-indigo-600" : ""
+        };
     };
 
-    const getLinkClass = (link) => {
-        return `transition-all duration-300 flex items-center space-x-3 px-2.5 py-3 transition duration-300 rounded-md ${getActiveClassByLink(link).isActive ? '' : 'hover:bg-gray-200 hover:shadow'}${getActiveClassByLink(link).class}`;
+    const getLinkClass = link => {
+        return `transition-all duration-300 flex items-center space-x-3 px-2.5 py-3 transition duration-300 rounded-md ${
+            getActiveClassByLink(link).isActive ? "" : "hover:bg-gray-200 hover:shadow"
+        }${getActiveClassByLink(link).class}`;
     };
 
     return (
@@ -29,7 +30,7 @@ const Sidebar = () => {
                     className={getLinkClass("/dashboard")}
                     to="/dashboard"
                 >
-                    <HiOutlineHome className="h-6 w-6"/>
+                    <HiOutlineHome className="h-6 w-6" />
                     <span>Dashboard</span>
                 </NavLink>
             </li>
@@ -40,7 +41,7 @@ const Sidebar = () => {
                     className={getLinkClass("/reload-account")}
                     to="/reload-account"
                 >
-                    <TfiReload className="w-6 h-6"/>
+                    <TfiReload className="w-6 h-6" />
                     <span>Reload Account</span>
                 </NavLink>
             </li>

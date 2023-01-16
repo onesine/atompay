@@ -1,20 +1,21 @@
+import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { RiFacebookCircleFill } from "react-icons/ri";
-import AuthLayout from "../layouts/AuthLayout";
-import {Checkbox, Input} from "../components/field";
-import {Link, Loader} from "../components/utils";
-import {PrimaryButton, SecondaryButton} from "../components/buttons";
-import React, {useState} from "react";
-import {toast} from "../helpers";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import { PrimaryButton, SecondaryButton } from "../components/buttons";
+import { Checkbox, Input } from "../components/field";
+import { Link, Loader } from "../components/utils";
 import config from "../config";
+import { toast } from "../helpers";
+import AuthLayout from "../layouts/AuthLayout";
 
 const Login = () => {
     const navigate = useNavigate();
     const defaultMessage = {
         email: [],
-        password: [],
-    }
+        password: []
+    };
 
     const [loading, setLoading] = useState(false);
     const [invalid, setInvalid] = useState(false);
@@ -27,24 +28,30 @@ const Login = () => {
         setTimeout(() => {
             const newErrorMessage = defaultMessage;
             if (!email) {
-                newErrorMessage.email = ["This field is required"]
+                newErrorMessage.email = ["This field is required"];
             }
             if (!password) {
                 newErrorMessage.password = ["This field is required"];
             }
 
-            if (email === (process.env.REACT_APP_LOGIN || "paydunya@gmail.com") && password === (process.env.REACT_APP_PASSWORD || "12345")) {
+            if (
+                email === (process.env.REACT_APP_LOGIN || "paydunya@gmail.com") &&
+                password === (process.env.REACT_APP_PASSWORD || "12345")
+            ) {
                 setInvalid(true);
                 toast("success", "Successful connection");
                 config.AUTH.DRIVER.setItem("user", {
                     name: "Paydunya",
                     permissions: ["reload-account", "dashboard", "transfer-money"]
-                })
+                });
                 navigate(config.AUTH.REDIRECT_LOGIN);
             }
 
-            if ((!email || !password) || (email !== "paydunya@gmail.com" || password !== "12345")) {
-                if (email !== process.env.REACT_APP_LOGIN || password !== process.env.REACT_APP_PASSWORD) {
+            if (!email || !password || email !== "paydunya@gmail.com" || password !== "12345") {
+                if (
+                    email !== process.env.REACT_APP_LOGIN ||
+                    password !== process.env.REACT_APP_PASSWORD
+                ) {
                     setInvalid(true);
                 } else {
                     setInvalid(false);
@@ -56,7 +63,6 @@ const Login = () => {
             setLoading(false);
         }, 3000);
     };
-
 
     return (
         <AuthLayout
@@ -109,9 +115,7 @@ const Login = () => {
                 </div>
 
                 <PrimaryButton onClick={login} disabled={loading}>
-                    {loading && (
-                        <Loader color={"white"}/>
-                    )}
+                    {loading && <Loader color={"white"} />}
                     <span>Login to account</span>
                 </PrimaryButton>
 

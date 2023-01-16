@@ -1,7 +1,17 @@
-import {useState} from "react";
-import {HiEye, HiEyeSlash} from "react-icons/hi2";
+import { useState } from "react";
+import { HiEye, HiEyeSlash } from "react-icons/hi2";
 
-export const Input = ({ id = "", type = "text", label = "", required = true, placeholder = "", value = "", disabled = false, error = [], onChange = () => {}}) => {
+export const Input = ({
+    id = "",
+    type = "text",
+    label = "",
+    required = true,
+    placeholder = "",
+    value = "",
+    disabled = false,
+    error = [],
+    onChange = () => {}
+}) => {
     const [show, setShow] = useState(false);
 
     return (
@@ -14,7 +24,13 @@ export const Input = ({ id = "", type = "text", label = "", required = true, pla
                 <input
                     id={id}
                     type={type === "password" ? (show ? "text" : "password") : type}
-                    className={`transition-all duration-300 ${disabled ? 'bg-gray-100' : ''} mt-2 py-2.5 px-4 w-full ${error.length ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20' : 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500/20'} rounded-md text-sm placeholder-gray-400 focus:ring ${
+                    className={`transition-all duration-300 ${
+                        disabled ? "bg-gray-100" : ""
+                    } mt-2 py-2.5 px-4 w-full ${
+                        error.length
+                            ? "border-red-300 focus:border-red-500 focus:ring-red-500/20"
+                            : "border-gray-300 focus:border-indigo-500 focus:ring-indigo-500/20"
+                    } rounded-md text-sm placeholder-gray-400 focus:ring ${
                         type === "password" ? " pr-10" : ""
                     }`}
                     placeholder={placeholder}
@@ -40,7 +56,9 @@ export const Input = ({ id = "", type = "text", label = "", required = true, pla
                 )}
 
                 {error.map((item, index) => (
-                    <p key={index} className="text-red-400 text-sm mt-0.5">{item}</p>
+                    <p key={index} className="text-red-400 text-sm mt-0.5">
+                        {item}
+                    </p>
                 ))}
             </div>
         </>
