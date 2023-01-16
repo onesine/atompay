@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+<h1 align="center">AtomPay</h1>
+<hr>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+    <a href="https://test-paydunya-atompay.vercel.app/" target="_blank">
+      <img alt="AtomPay Applicationo" width="100" style="border-radius: 100%;" src="https://raw.githubusercontent.com/onesine/atompay/master/assets/img/logo.svg?raw=true">
+    </a><br><br>
+    AtomPay is a money transfer platform made with React and Tailwindcss.
+</p>
 
-## Available Scripts
+## Pages
+* [Landing](https://test-paydunya-atompay.vercel.app/)
+* [Login](https://test-paydunya-atompay.vercel.app/login)
+* [Register](https://test-paydunya-atompay.vercel.app/forgot-password)
+* [Forgot password](https://test-paydunya-atompay.vercel.app/forgot-password)
+* [Reset password](https://test-paydunya-atompay.vercel.app/reset-password)
+* [Dashboard](https://test-paydunya-atompay.vercel.app/dashboard)
+* [Reload account](https://test-paydunya-atompay.vercel.app/reload-account)
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+1. Clone this repo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```sh
+    git clone https://github.com/onesine/atompay.git
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. Go into the project root directory
 
-### `npm test`
+```sh
+    cd atompay
+```
+3. Set up the user account
+   By default, we have a user account with the login "paydunya@gmail.com" and the password "12345". To modify this account, create an .env file from the .env.example file.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```dotenv
+   REACT_APP_NAME="AtomPay"
+   REACT_APP_VERSION="1"
+   REACT_APP_LOGIN="paydunya@gmail.com"
+   REACT_APP_PASSWORD="12345"
 
-### `npm run build`
+   REACT_APP_API_HOST="http://admin-api.com"
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   REACT_APP_LARAVEL_PASSPORT_CLIENT=""
+   REACT_APP_LARAVEL_PASSPORT_CLIENT_SECRET=""
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Install JS dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
+    yarn
+```
 
-### `npm run eject`
+5. Start the dev server
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```sh
+    yarn start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Overview of some pages
+**Landing page**
+![Landing page](https://raw.githubusercontent.com/onesine/atompay/master/assets/img/home.png?raw=true)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Register page**
+![Register page](https://raw.githubusercontent.com/onesine/atompay/master/assets/img/register.png?raw=true)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**Dashboard page**
+![Dashboard page](https://raw.githubusercontent.com/onesine/atompay/master/assets/img/dashboard.png?raw=true)
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Reload account page**
+![Reload account page
+](https://raw.githubusercontent.com/onesine/atompay/master/assets/img/reload-account.png?raw=true)
