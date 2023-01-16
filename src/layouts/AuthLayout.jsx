@@ -1,4 +1,5 @@
 import { HiBeaker } from "react-icons/hi2";
+import {Link} from "react-router-dom";
 
 const AuthLayout = ({ title = "", children }) => {
     return (
@@ -8,11 +9,11 @@ const AuthLayout = ({ title = "", children }) => {
                     <img className="w-8/12 h-auto" src="/images/auth-5.png" alt="" />
 
                     <div className="space-y-8 p-9">
-                        <a href="#login" className="flex items-center space-x-3">
+                        <Link to="/" className="flex items-center space-x-3">
                             <HiBeaker className="w-9 h-9 md:w-12 md:h-12 text-indigo-600" />
                             <div>
                                 <p className="inline text-xl md:text-2xl uppercase font-bold leading-[0.5rem]">
-                                    Ato<span className="font-[300]">mique</span>
+                                    Atom<span className="font-[300]">pay</span>
                                 </p>
                                 <div className="flex items-center space-x-0.5 leading-[0.5rem]">
                                     <span className="text-[0.62rem] font-bold text-indigo-600 uppercase leading-[0.5rem]">
@@ -21,7 +22,7 @@ const AuthLayout = ({ title = "", children }) => {
                                     <hr className="w-5 border-sky-600" />
                                 </div>
                             </div>
-                        </a>
+                        </Link>
 
                         <div className="space-y-4">
                             <h1 className="text-2xl lg:text-4xl font-semibold">{title}</h1>

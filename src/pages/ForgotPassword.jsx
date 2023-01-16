@@ -1,9 +1,36 @@
 import AuthLayout from "../layouts/AuthLayout";
 import {Input} from "../components/field";
 import {PrimaryButton} from "../components/buttons";
-import {Link} from "../components/utils";
+import {Link, Loader} from "../components/utils";
+import React, {useState} from "react";
+import {toast} from "../helpers";
 
 const ForgotPassword = () => {
+    const [validationMessage, setValidationMessage] = useState([]);
+    const [email, setEmail] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    const onSubmit = () => {
+        setLoading(true);
+
+        setTimeout(() => {
+            setLoading(false);
+            if (email) {
+                if (email !== "paydunya@gmail.com") {
+                    toast('error', 'Failed to reload account');
+                    setValidationMessage([`The email does not match a user`]);
+                } else {
+                    toast('success', 'An email has been sent to you to reset your password.');
+                    setEmail("");
+                    setValidationMessage([]);
+                }
+            } else {
+                toast('error', "Failed to reload account");
+                setValidationMessage(["This field is required"]);
+            }
+        }, 3000);
+    };
+    
     return (
         <AuthLayout
             title={
@@ -20,10 +47,23 @@ const ForgotPassword = () => {
 
             <form className="space-y-5">
                 <div>
-                    <Input label={"Email"} id="email" type="email" placeholder="Enter email" />
+                    <Input
+                        label={"Email"}
+                        id="email"
+                        type="email"
+                        placeholder="Enter email"
+                        value={email}
+                        onChange={e => {setEmail(e.target.value)}}
+                        error={validationMessage}
+                    />
                 </div>
 
-                <PrimaryButton>Send Reset Link</PrimaryButton>
+                <PrimaryButton onClick={onSubmit} disabled={loading}>
+                    {loading && (
+                        <Loader color={"white"}/>
+                    )}
+                    <span>Send Reset Link</span>
+                </PrimaryButton>
 
                 <p className="text-sm text-center">
                     <Link href="/login">Back to Login</Link>

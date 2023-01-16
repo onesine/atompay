@@ -3,9 +3,52 @@ import { RiFacebookCircleFill } from "react-icons/ri";
 import AuthLayout from "../layouts/AuthLayout";
 import {Checkbox, Input} from "../components/field";
 import {PrimaryButton, SecondaryButton} from "../components/buttons";
-import {Link} from "../components/utils";
+import {Link, Loader} from "../components/utils";
+import {useNavigate} from "react-router-dom";
+import React, {useState} from "react";
+import {toast} from "../helpers";
 
 const Register = () => {
+    const navigate = useNavigate();
+    const defaultMessage = {
+        email: [],
+        password: [],
+        telephone: []
+    }
+
+    const [loading, setLoading] = useState(false);
+    const [telephone, setTelephone] = useState("");
+    const [errorMessage, setErrorMessage] = useState(defaultMessage);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const register = () => {
+        setLoading(true);
+        setTimeout(() => {
+            const newErrorMessage = defaultMessage;
+            if (!email) {
+                newErrorMessage.email = ["This field is required"]
+            }
+            if (!password) {
+                newErrorMessage.password = ["This field is required"];
+            }
+
+            if (!telephone) {
+                newErrorMessage.telephone = ["This field is required"];
+            }
+
+            if (email && telephone && password) {
+                toast("success", "Successful registration");
+                navigate("/login");
+            } else {
+                toast("error", "Failed registration")
+            }
+            setErrorMessage(defaultMessage);
+            setLoading(false);
+        }, 3000);
+    };
+
+
     return (
         <AuthLayout
             title={
@@ -22,15 +65,26 @@ const Register = () => {
             <form className="space-y-5">
                 <div>
                     <Input
-                        label={"Username"}
-                        id="username"
-                        type="text"
-                        placeholder="Enter username"
+                        label={"Phone number"}
+                        id="phone_number"
+                        type="tel"
+                        placeholder="Enter phone number"
+                        value={telephone}
+                        onChange={e => setTelephone(e.target.value)}
+                        error={errorMessage.telephone}
                     />
                 </div>
 
                 <div>
-                    <Input label={"Email"} id="email" type="email" placeholder="Enter email" />
+                    <Input
+                        label={"Email"}
+                        id="email"
+                        type="email"
+                        placeholder="Enter email"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                        error={errorMessage.email}
+                    />
                 </div>
 
                 <div>
@@ -39,6 +93,9 @@ const Register = () => {
                         id="password"
                         type="password"
                         placeholder="Enter password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                        error={errorMessage.password}
                     />
                 </div>
 
@@ -46,7 +103,12 @@ const Register = () => {
                     <Checkbox id="remember" label="I agree to privacy policy & terms" />
                 </div>
 
-                <PrimaryButton>Sign up</PrimaryButton>
+                <PrimaryButton onClick={register}>
+                    {loading && (
+                        <Loader color={"white"}/>
+                    )}
+                    <span>Sign up</span>
+                </PrimaryButton>
 
                 <div className="flex items-center justify-center space-x-3">
                     <hr className="w-12" />

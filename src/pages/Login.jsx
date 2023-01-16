@@ -2,10 +2,62 @@ import { FcGoogle } from "react-icons/fc";
 import { RiFacebookCircleFill } from "react-icons/ri";
 import AuthLayout from "../layouts/AuthLayout";
 import {Checkbox, Input} from "../components/field";
-import {Link} from "../components/utils";
+import {Link, Loader} from "../components/utils";
 import {PrimaryButton, SecondaryButton} from "../components/buttons";
+import React, {useState} from "react";
+import {toast} from "../helpers";
+import {useNavigate} from "react-router-dom";
+import config from "../config";
 
 const Login = () => {
+    const navigate = useNavigate();
+    const defaultMessage = {
+        email: [],
+        password: [],
+    }
+
+    const [loading, setLoading] = useState(false);
+    const [invalid, setInvalid] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(defaultMessage);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const login = () => {
+        setLoading(true);
+        setTimeout(() => {
+            const newErrorMessage = defaultMessage;
+            if (!email) {
+                newErrorMessage.email = ["This field is required"]
+            }
+            if (!password) {
+                newErrorMessage.password = ["This field is required"];
+            }
+
+            if (email === "paydunya@gmail.com" && password === "12345") {
+                setInvalid(true);
+                toast("succes", "Successful connection");
+                config.AUTH.DRIVER.setItem("user", {
+                    name: "Paydunya",
+                    permissions: ["reload-account", "dashboard", "transfer-money"]
+                })
+                navigate(config.AUTH.REDIRECT_LOGIN);
+            }
+
+            if ((!email || !password) || (email !== "paydunya@gmail.com" || password !== "12345")) {
+                if (email !== "paydunya@gmail.com" || password !== "12345") {
+                    setInvalid(true);
+                } else {
+                    setInvalid(false);
+                }
+                toast("error", "Connection failed");
+            }
+
+            setErrorMessage(newErrorMessage);
+            setLoading(false);
+        }, 3000);
+    };
+
+
     return (
         <AuthLayout
             title={
@@ -19,9 +71,23 @@ const Login = () => {
                 Please sign-in to your account and start the adventure.
             </p>
 
+            {invalid && (
+                <div className="my-2 text-center text-red-600 bg-red-100 py-2 rounded-md">
+                    Invalid email or password
+                </div>
+            )}
+
             <form className="space-y-5">
                 <div>
-                    <Input label={"Email"} id="email" type="email" placeholder="Enter email" />
+                    <Input
+                        label={"Email"}
+                        id="email"
+                        type="email"
+                        placeholder="Enter email"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                        error={errorMessage.email}
+                    />
                 </div>
 
                 <div>
@@ -30,6 +96,9 @@ const Login = () => {
                         id="password"
                         type="password"
                         placeholder="Enter password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                        error={errorMessage.password}
                     />
                 </div>
 
@@ -39,7 +108,12 @@ const Login = () => {
                     <Link href="/forgot-password">Forgot Password?</Link>
                 </div>
 
-                <PrimaryButton>Login to account</PrimaryButton>
+                <PrimaryButton onClick={login} disabled={loading}>
+                    {loading && (
+                        <Loader color={"white"}/>
+                    )}
+                    <span>Login to account</span>
+                </PrimaryButton>
 
                 <div className="flex items-center justify-center space-x-3">
                     <hr className="w-12" />

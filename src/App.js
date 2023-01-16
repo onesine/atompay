@@ -6,21 +6,57 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 
+// middlewares
+import {Auth, Guest} from "./middlewares";
+
 // Auth Page
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 
+// Dashboard Page
+import Dashboard from "./pages/Dashboard";
+
+// Reload Account Page
+import ReloadAccount from "./pages/ReloadAccount";
+
 const App = () => {
     return (
         <Router>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/forgot-password" element={<ForgotPassword />} />
-                <Route path="/reset-password" element={<ResetPassword />} />
+                <Route path="/login" element={(
+                    <Guest>
+                        <Login />
+                    </Guest>
+                )} />
+                <Route path="/register" element={(
+                    <Guest>
+                        <Register />
+                    </Guest>
+                )} />
+                <Route path="/forgot-password" element={(
+                    <Guest>
+                        <ForgotPassword />
+                    </Guest>
+                )} />
+                <Route path="/reset-password" element={(
+                    <Guest>
+                        <ResetPassword />
+                    </Guest>
+                )} />
+
+                <Route path="/dashboard" element={
+                    <Auth>
+                        <Dashboard />
+                    </Auth>
+                } />
+                <Route path="/reload-account" element={(
+                    <Auth>
+                        <ReloadAccount />
+                    </Auth>
+                )} />
                 <Route path="/*" element={<Home />} />
             </Routes>
         </Router>
