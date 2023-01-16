@@ -33,7 +33,7 @@ const Login = () => {
                 newErrorMessage.password = ["This field is required"];
             }
 
-            if (email === "paydunya@gmail.com" && password === "12345") {
+            if (email === (process.env.REACT_APP_LOGIN || "paydunya@gmail.com") && password === (process.env.REACT_APP_PASSWORD || "12345")) {
                 setInvalid(true);
                 toast("succes", "Successful connection");
                 config.AUTH.DRIVER.setItem("user", {
