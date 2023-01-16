@@ -1,5 +1,4 @@
 <h1 align="center">AtomPay</h1>
-<hr>
 
 <p align="center">
     <a href="https://test-paydunya-atompay.vercel.app/" target="_blank">
@@ -9,13 +8,13 @@
 </p>
 
 ## Pages
-* [Landing](https://test-paydunya-atompay.vercel.app/)
-* [Login](https://test-paydunya-atompay.vercel.app/login)
-* [Register](https://test-paydunya-atompay.vercel.app/forgot-password)
-* [Forgot password](https://test-paydunya-atompay.vercel.app/forgot-password)
-* [Reset password](https://test-paydunya-atompay.vercel.app/reset-password)
-* [Dashboard](https://test-paydunya-atompay.vercel.app/dashboard)
-* [Reload account](https://test-paydunya-atompay.vercel.app/reload-account)
+* <a href="https://test-paydunya-atompay.vercel.app/" target="_blank">Landing</a>
+* <a href="https://test-paydunya-atompay.vercel.app/login" target="_blank">Login</a>
+* <a href="https://test-paydunya-atompay.vercel.app/register" target="_blank">Register</a>
+* <a href="https://test-paydunya-atompay.vercel.app/forgot-password" target="_blank">Forgot password</a>
+* <a href="https://test-paydunya-atompay.vercel.app/reset-password" target="_blank">Reset password</a>
+* <a href="https://test-paydunya-atompay.vercel.app/dashboard" target="_blank">Dashboard</a>
+* <a href="https://test-paydunya-atompay.vercel.app/reload-account" target="_blank">Reload account</a>
 
 ## Installation
 
