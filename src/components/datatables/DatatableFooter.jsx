@@ -58,7 +58,7 @@ const DatatableFooter = ({ currentPage = 0, totalPage = 0, next, previous, gotoP
     return (
         <Container id="table_pagination">
             <ShowingInfo>
-                Affichage page {currentPage} sur {totalPage}
+                Display page {currentPage} of {totalPage}
             </ShowingInfo>
 
             <div className="flex items-center space-x-2">

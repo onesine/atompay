@@ -37,7 +37,7 @@ export const confirmAlert = (executing, confirmButtonText = "Yes, delete!") => {
         confirmButtonColor: "#ef4444",
         cancelButtonColor: "#52525b",
         confirmButtonText: confirmButtonText,
-        cancelButtonText: "Quitter",
+        cancelButtonText: "Cancel",
         showLoaderOnConfirm: true,
         preConfirm: executing
     }).then(result => {
