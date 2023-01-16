@@ -37,6 +37,7 @@ const TransferForm = () => {
 
     const submit = () => {
         if (!checkUser()) {
+            toast("error", "This action requires you to be connected");
             navigate('/login');
         } else {
             setLoading(true);

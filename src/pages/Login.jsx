@@ -35,7 +35,7 @@ const Login = () => {
 
             if (email === (process.env.REACT_APP_LOGIN || "paydunya@gmail.com") && password === (process.env.REACT_APP_PASSWORD || "12345")) {
                 setInvalid(true);
-                toast("succes", "Successful connection");
+                toast("success", "Successful connection");
                 config.AUTH.DRIVER.setItem("user", {
                     name: "Paydunya",
                     permissions: ["reload-account", "dashboard", "transfer-money"]
