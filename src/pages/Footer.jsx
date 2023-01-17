@@ -18,7 +18,7 @@ const Footer = () => {
                 />
 
                 <div className="mt-8 flex items-center justify-between">
-                    <p className="text-gray-500 uppercase">
+                    <p className="text-gray-500 uppercase text-sm md:text-base">
                         Copyright © 2022 AtomPay. All Rights Reserved.
                     </p>
 
